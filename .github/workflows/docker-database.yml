@@ -87,6 +87,9 @@ jobs:
           file: ./Dockerfile.database
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
+            NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${{ secrets.CLERK_PUBLISHABLE_KEY }}
+            CLERK_SECRET_KEY=${{ secrets.CLERK_SECRET_KEY }}
+            CLERK_WEBHOOK_SECRET=${{ secrets.CLERK_WEBHOOK_SECRET }}
             SHA=${{ steps.vars.outputs.sha_short }}
           outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
 
