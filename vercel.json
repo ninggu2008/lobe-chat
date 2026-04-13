@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm run build:spa:copy && NODE_OPTIONS=--max-old-space-size=6144 next build",
+  "buildCommand": "cross-env-shell NODE_OPTIONS=--max-old-space-size=8192 \"bun run build:raw && bun run db:migrate\"",
   "headers": [
     {
       "source": "/_spa/(.*)",
